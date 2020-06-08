@@ -21,13 +21,15 @@
 <div class="header_container">
     <div class="container-fluid pl-4 pr-4">
         <div class="flex_items">
-            <div class="flex_items">
-                <div class="mr-2" style="position: relative">
-                    <div class="logo_mock_dot"></div>
-                    <div class="logo_mock"></div>
+            <a href="{{ url('/') }}">
+                <div class="flex_items">
+                    <div class="mr-2" style="position: relative">
+                        <div class="logo_mock_dot"></div>
+                        <div class="logo_mock"></div>
+                    </div>
+                    <span class="pt-4 pb-4 title">Internia</span>
                 </div>
-                <span class="pt-4 pb-4 title">Internia</span>
-            </div>
+            </a>
             <div class="flex_items d-none d-sm-none d-lg-flex d-lg-flex">
                 <span class="pt-4 pb-4 mr-5">Calender</span>
                 <span class="pt-4 pb-4 mr-5">Statistic</span>
