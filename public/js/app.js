@@ -38898,7 +38898,7 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "image" }, [
+                    _c("div", { staticClass: "image ml-3" }, [
                       _c("img", { attrs: { src: item.image, alt: "" } })
                     ])
                   ])
@@ -38931,7 +38931,7 @@ var render = function() {
                     ? _c(
                         "small",
                         { staticClass: "badge badge-pill badge-danger" },
-                        [_vm._v("-" + _vm._s(item.last_salary_change))]
+                        [_vm._v(_vm._s(item.last_salary_change))]
                       )
                     : _vm._e(),
                   _vm._v(" "),

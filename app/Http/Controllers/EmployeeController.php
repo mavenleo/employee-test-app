@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\Validator;
 class EmployeeController extends Controller
 {
     public function ListEmployees(Request $request){
-        $employees = DB::select("SELECT * FROM employees");
-
+        $employees = DB::table('employees')
+        ->orderBy('id', 'desc')
+        ->limit(10)
+        ->get();
         return response()->json([
             'message' => 'Data retrieved',
             'data' => $employees
@@ -54,6 +56,7 @@ class EmployeeController extends Controller
             'image' => $request->get('image'),
             'job_title' => $data['job_title'],
             'job_status' => $data['job_status'],
+            'created_at' => now()
         );
         DB::table('employees')->insert($insertData);
 

@@ -40,7 +40,7 @@
                                     <path fill-rule="evenodd"  clip-rule="evenodd" d="M5.9928 7.1748L2.56067 3.74316C1.97473 3.15723 1.02502 3.15723 0.439087 3.74316C-0.146362 4.3291 -0.146362 5.27832 0.439087 5.86426L4.68176 10.1074C5.0387 10.4639 5.52893 10.6035 5.99133 10.5254C6.45374 10.6035 6.94641 10.4648 7.30334 10.1074L14.8502 2.56055C15.4362 1.97461 15.4362 1.02441 14.8502 0.439453C14.2648 -0.146484 13.3151 -0.146484 12.7291 0.439453L5.9928 7.1748Z" fill="white" />
                                 </svg>
                             </label>
-                            <div class="image"><img :src="item.image" alt=""></div>
+                            <div class="image ml-3"><img :src="item.image" alt=""></div>
                         </div>
                     </td>
                     <td>
@@ -50,7 +50,7 @@
                     <td>
                         ₦{{ formatPrice(item.current_salary) }}
                         <small v-if="item.last_salary_change > 0" class="badge badge-pill badge-success">+{{ item.last_salary_change }}</small>
-                        <small v-if="item.last_salary_change < 0" class="badge badge-pill badge-danger">-{{ item.last_salary_change }}</small>
+                        <small v-if="item.last_salary_change < 0" class="badge badge-pill badge-danger">{{ item.last_salary_change }}</small>
                         <span>{{ item.job_type }}</span>
                     </td>
                     <td>

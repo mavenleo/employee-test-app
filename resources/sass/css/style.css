@@ -7,6 +7,9 @@
     outline: 0 !important;
     text-decoration: none;
 }
+html, body{
+    overflow-x: hidden;
+}
 
 .title{
     font-family: 'Kodchasan', sans-serif;
@@ -136,10 +139,12 @@ label{
 #employee tbody tr:hover {
     -webkit-transform: scale(1.05, 1.05);
     transform: scale(1.05, 1.05);
+    transition:all 0.3s ease;
     z-index: 99999;
 }
 #employee tbody tr:hover .fa-trash-o{
     color: #fd384d!important;
+    cursor: pointer;
 }
 
 .side_bar{
@@ -224,9 +229,6 @@ tr td:last-child {
     height: 400px;
 }
 @media (max-width: 720px){
-    html, body{
-        overflow-x: hidden;
-    }
     .header_container{
         padding: 1rem 15px;
     }
