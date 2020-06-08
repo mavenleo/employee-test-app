@@ -48,7 +48,7 @@
                         <span>{{ item.job_title }}</span>
                     </td>
                     <td>
-                        ₦{{ formatPrice(item.current_salary) }}
+                        ₦{{ crToString(item.current_salary) }}
                         <small v-if="item.last_salary_change > 0" class="badge badge-pill badge-success">+{{ item.last_salary_change }}</small>
                         <small v-if="item.last_salary_change < 0" class="badge badge-pill badge-danger">{{ item.last_salary_change }}</small>
                         <span>{{ item.job_type }}</span>
@@ -150,7 +150,17 @@
                             return Math.floor(seconds / format[2]) + ' ' + format[1];
                     }
                 return time;
-            }
+            },
+            crToString(n) {
+                if (n < 1000000) {
+                    n = n / 1000;
+                    n = n.toFixed(2) + "K";
+                } else {
+                    n = n / 1000000;
+                    n = n.toFixed(2) + "M";
+                }
+                return n;
+            },
         }
     }
 </script>

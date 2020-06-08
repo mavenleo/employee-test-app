@@ -2063,6 +2063,17 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       }
 
       return time;
+    },
+    crToString: function crToString(n) {
+      if (n < 1000000) {
+        n = n / 1000;
+        n = n.toFixed(2) + "K";
+      } else {
+        n = n / 1000000;
+        n = n.toFixed(2) + "M";
+      }
+
+      return n;
     }
   }
 });
@@ -38916,7 +38927,7 @@ var render = function() {
                 _c("td", [
                   _vm._v(
                     "\n                    ₦" +
-                      _vm._s(_vm.formatPrice(item.current_salary)) +
+                      _vm._s(_vm.crToString(item.current_salary)) +
                       "\n                    "
                   ),
                   item.last_salary_change > 0
