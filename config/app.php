@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    'log' => 'errorlog',
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -25,6 +25,7 @@ return [
     | services the application utilizes. Set this in your ".env" file.
     |
     */
+
 
     'env' => env('APP_ENV', 'production'),
 
@@ -55,6 +56,7 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
+
 
     /*
     |--------------------------------------------------------------------------
