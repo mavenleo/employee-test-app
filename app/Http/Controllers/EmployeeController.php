@@ -23,7 +23,7 @@ class EmployeeController extends Controller
     }
 
     public function deleteEmployee($id){
-//        Employee::where('id', $id)->delete();
+        Employee::where('id', $id)->delete();
 
         return response()->json([
             'message' => 'Employee data successfully deleted',
