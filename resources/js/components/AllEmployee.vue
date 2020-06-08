@@ -1,5 +1,11 @@
 <template>
-    <table id="employee">
+    <div v-if="loading" class="loader">
+        <div class="text-center">
+            <h3>Loading data...</h3>
+            <p><i class="fa fa-spinner fa-spin"></i></p>
+        </div>
+    </div>
+    <table v-else  id="employee">
                 <thead>
                 <tr class="p-5">
                     <td>
@@ -74,12 +80,13 @@
             return {
                 employees: [],
                 edit: '/edit-details/',
-                loading: false,
+                loading: true,
                 noData: false
             }
         },
         created() {
             axios.get('/list-employees').then(res => {
+                this.loading = false;
                 this.employees = res.data.data;
             });
         },

@@ -3,6 +3,7 @@
 }
 *:focus {
     outline: 0 !important;
+    text-decoration: none;
 }
 
 .title{
@@ -109,7 +110,7 @@ label{
     border-radius: 5px;
     background-color: #FFF;
     border: 1px solid #C1B7C2;
-    box-shadow: 0px 0px 0px 0px #C1B7C2 inset;
+    box-shadow: 0 0 0 0 #C1B7C2 inset;
     transition: all 0.15s cubic-bezier(0, 1.05, 0.72, 1.07);
 }
 .chkbox .check::after {
@@ -211,6 +212,13 @@ tr td:last-child {
 .menu_icons
 {
     font-size: 25px!important;
+}
+.loader{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
 }
 @media (max-width: 720px){
     html, body{

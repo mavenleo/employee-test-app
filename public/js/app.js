@@ -1979,6 +1979,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1986,7 +1992,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     return {
       employees: [],
       edit: '/edit-details/',
-      loading: false,
+      loading: true,
       noData: false
     };
   },
@@ -1994,6 +2000,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
     var _this = this;
 
     axios.get('/list-employees').then(function (res) {
+      _this.loading = false;
       _this.employees = res.data.data;
     });
   },
@@ -2374,6 +2381,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2383,6 +2396,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       employees: [],
       edit: '/edit-details/',
       noData: false,
+      loading: true,
       image: '',
       name: '',
       salary: '',
@@ -2405,6 +2419,7 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
       _this.jobType = res.data.employee.job_type;
       _this.jobStatus = res.data.employee.job_status;
       _this.name = res.data.employee.name;
+      _this.loading = false;
     });
   },
   methods: {
@@ -38794,160 +38809,178 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("table", { attrs: { id: "employee" } }, [
-    _c("thead", [
-      _c("tr", { staticClass: "p-5" }, [
-        _c("td", [
-          _c("label", { staticClass: "chkbox" }, [
-            _c("input", { attrs: { type: "checkbox" } }),
-            _vm._v(" "),
-            _c(
-              "svg",
-              {
-                staticClass: "check",
-                attrs: {
-                  width: "16",
-                  height: "11",
-                  viewBox: "0 0 16 11",
-                  fill: "none",
-                  xmlns: "http://www.w3.org/2000/svg"
-                }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    "fill-rule": "evenodd",
-                    "clip-rule": "evenodd",
-                    d:
-                      "M5.9928 7.1748L2.56067 3.74316C1.97473 3.15723 1.02502 3.15723 0.439087 3.74316C-0.146362 4.3291 -0.146362 5.27832 0.439087 5.86426L4.68176 10.1074C5.0387 10.4639 5.52893 10.6035 5.99133 10.5254C6.45374 10.6035 6.94641 10.4648 7.30334 10.1074L14.8502 2.56055C15.4362 1.97461 15.4362 1.02441 14.8502 0.439453C14.2648 -0.146484 13.3151 -0.146484 12.7291 0.439453L5.9928 7.1748Z",
-                    fill: "white"
-                  }
-                })
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("td", [_vm._v("\n                    EMPLOYEE\n                ")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("\n                    SALARY\n                ")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("\n                    STATUS\n                ")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("\n                    MANAGE\n                ")])
-      ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "tbody",
-      { staticClass: "scrollable" },
-      [
-        _vm._l(_vm.employees, function(item, i) {
-          return _c("tr", [
+  return _vm.loading
+    ? _c("div", { staticClass: "loader" }, [_vm._m(0)])
+    : _c("table", { attrs: { id: "employee" } }, [
+        _c("thead", [
+          _c("tr", { staticClass: "p-5" }, [
             _c("td", [
-              _c("div", { staticClass: "flex_items" }, [
-                _c("label", { staticClass: "chkbox" }, [
-                  _c("input", { attrs: { type: "checkbox" } }),
-                  _vm._v(" "),
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "check",
-                      attrs: {
-                        width: "16",
-                        height: "11",
-                        viewBox: "0 0 16 11",
-                        fill: "none",
-                        xmlns: "http://www.w3.org/2000/svg"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          "fill-rule": "evenodd",
-                          "clip-rule": "evenodd",
-                          d:
-                            "M5.9928 7.1748L2.56067 3.74316C1.97473 3.15723 1.02502 3.15723 0.439087 3.74316C-0.146362 4.3291 -0.146362 5.27832 0.439087 5.86426L4.68176 10.1074C5.0387 10.4639 5.52893 10.6035 5.99133 10.5254C6.45374 10.6035 6.94641 10.4648 7.30334 10.1074L14.8502 2.56055C15.4362 1.97461 15.4362 1.02441 14.8502 0.439453C14.2648 -0.146484 13.3151 -0.146484 12.7291 0.439453L5.9928 7.1748Z",
-                          fill: "white"
-                        }
-                      })
-                    ]
-                  )
-                ]),
+              _c("label", { staticClass: "chkbox" }, [
+                _c("input", { attrs: { type: "checkbox" } }),
                 _vm._v(" "),
-                _c("div", { staticClass: "image" }, [
-                  _c("img", { attrs: { src: item.image, alt: "" } })
-                ])
+                _c(
+                  "svg",
+                  {
+                    staticClass: "check",
+                    attrs: {
+                      width: "16",
+                      height: "11",
+                      viewBox: "0 0 16 11",
+                      fill: "none",
+                      xmlns: "http://www.w3.org/2000/svg"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        "fill-rule": "evenodd",
+                        "clip-rule": "evenodd",
+                        d:
+                          "M5.9928 7.1748L2.56067 3.74316C1.97473 3.15723 1.02502 3.15723 0.439087 3.74316C-0.146362 4.3291 -0.146362 5.27832 0.439087 5.86426L4.68176 10.1074C5.0387 10.4639 5.52893 10.6035 5.99133 10.5254C6.45374 10.6035 6.94641 10.4648 7.30334 10.1074L14.8502 2.56055C15.4362 1.97461 15.4362 1.02441 14.8502 0.439453C14.2648 -0.146484 13.3151 -0.146484 12.7291 0.439453L5.9928 7.1748Z",
+                        fill: "white"
+                      }
+                    })
+                  ]
+                )
               ])
             ]),
             _vm._v(" "),
             _c("td", [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(item.name) +
-                  "\n                    "
-              ),
-              _c("span", [_vm._v(_vm._s(item.job_title))])
+              _vm._v("\n                    EMPLOYEE\n                ")
             ]),
             _vm._v(" "),
             _c("td", [
-              _vm._v(
-                "\n                    ₦" +
-                  _vm._s(_vm.formatPrice(item.current_salary)) +
-                  "\n                    "
-              ),
-              item.last_salary_change > 0
-                ? _c(
-                    "small",
-                    { staticClass: "badge badge-pill badge-success" },
-                    [_vm._v("+" + _vm._s(item.last_salary_change))]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              item.last_salary_change < 0
-                ? _c(
-                    "small",
-                    { staticClass: "badge badge-pill badge-danger" },
-                    [_vm._v("-" + _vm._s(item.last_salary_change))]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(item.job_type))])
+              _vm._v("\n                    SALARY\n                ")
             ]),
             _vm._v(" "),
             _c("td", [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(item.job_status) +
-                  "\n                    "
-              ),
-              _c("span", [_vm._v(_vm._s(_vm.timeSince(item.created_at)))])
+              _vm._v("\n                    STATUS\n                ")
             ]),
             _vm._v(" "),
-            _c("td", [
-              _c("a", { attrs: { href: _vm.edit + item.id } }, [
-                _c("i", { staticClass: "fa pr-4 border-right fa-pencil" })
-              ]),
-              _vm._v(" "),
-              _c("i", {
-                staticClass: "fa fa-trash-o ml-4",
-                on: {
-                  click: function($event) {
-                    return _vm.deleteItem(item.id, i)
-                  }
-                }
-              })
-            ])
+            _c("td", [_vm._v("\n                    MANAGE\n                ")])
           ])
-        }),
+        ]),
         _vm._v(" "),
-        _vm.noData ? _c("tr", [_vm._m(0)]) : _vm._e()
-      ],
-      2
-    )
-  ])
+        _c(
+          "tbody",
+          { staticClass: "scrollable" },
+          [
+            _vm._l(_vm.employees, function(item, i) {
+              return _c("tr", [
+                _c("td", [
+                  _c("div", { staticClass: "flex_items" }, [
+                    _c("label", { staticClass: "chkbox" }, [
+                      _c("input", { attrs: { type: "checkbox" } }),
+                      _vm._v(" "),
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "check",
+                          attrs: {
+                            width: "16",
+                            height: "11",
+                            viewBox: "0 0 16 11",
+                            fill: "none",
+                            xmlns: "http://www.w3.org/2000/svg"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              "fill-rule": "evenodd",
+                              "clip-rule": "evenodd",
+                              d:
+                                "M5.9928 7.1748L2.56067 3.74316C1.97473 3.15723 1.02502 3.15723 0.439087 3.74316C-0.146362 4.3291 -0.146362 5.27832 0.439087 5.86426L4.68176 10.1074C5.0387 10.4639 5.52893 10.6035 5.99133 10.5254C6.45374 10.6035 6.94641 10.4648 7.30334 10.1074L14.8502 2.56055C15.4362 1.97461 15.4362 1.02441 14.8502 0.439453C14.2648 -0.146484 13.3151 -0.146484 12.7291 0.439453L5.9928 7.1748Z",
+                              fill: "white"
+                            }
+                          })
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "image" }, [
+                      _c("img", { attrs: { src: item.image, alt: "" } })
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(item.name) +
+                      "\n                    "
+                  ),
+                  _c("span", [_vm._v(_vm._s(item.job_title))])
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    "\n                    ₦" +
+                      _vm._s(_vm.formatPrice(item.current_salary)) +
+                      "\n                    "
+                  ),
+                  item.last_salary_change > 0
+                    ? _c(
+                        "small",
+                        { staticClass: "badge badge-pill badge-success" },
+                        [_vm._v("+" + _vm._s(item.last_salary_change))]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  item.last_salary_change < 0
+                    ? _c(
+                        "small",
+                        { staticClass: "badge badge-pill badge-danger" },
+                        [_vm._v("-" + _vm._s(item.last_salary_change))]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("span", [_vm._v(_vm._s(item.job_type))])
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(item.job_status) +
+                      "\n                    "
+                  ),
+                  _c("span", [_vm._v(_vm._s(_vm.timeSince(item.created_at)))])
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("a", { attrs: { href: _vm.edit + item.id } }, [
+                    _c("i", { staticClass: "fa pr-4 border-right fa-pencil" })
+                  ]),
+                  _vm._v(" "),
+                  _c("i", {
+                    staticClass: "fa fa-trash-o ml-4",
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteItem(item.id, i)
+                      }
+                    }
+                  })
+                ])
+              ])
+            }),
+            _vm._v(" "),
+            _vm.noData ? _c("tr", [_vm._m(1)]) : _vm._e()
+          ],
+          2
+        )
+      ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c("h3", [_vm._v("Loading data...")]),
+      _vm._v(" "),
+      _c("p", [_c("i", { staticClass: "fa fa-spinner fa-spin" })])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -39256,259 +39289,276 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "content p-3" }, [
-    _c("div", { staticClass: "container-fluid mt-4" }, [
-      _c(
-        "form",
-        {
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.createEmployee()
-            }
-          }
-        },
-        [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-12 mb-4 text-center" }, [
-              _vm.showError
-                ? _c("p", { staticClass: "alert-warning alert p-4" }, [
-                    _vm._v(_vm._s(_vm.err))
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _c("div", { staticClass: "image" }, [
-                _vm.image
-                  ? _c("img", {
-                      ref: "profileImage",
-                      attrs: { src: _vm.image }
-                    })
-                  : _c("img", {
-                      ref: "profileImage",
-                      attrs: {
-                        src:
-                          "https://s3.us-east-2.amazonaws.com/glorioustube/images/7669105f27f162dc1ae6b5f061220db7.png"
-                      }
+  return _vm.loading
+    ? _c("div", { staticClass: "loader" }, [_vm._m(0)])
+    : _c("div", { staticClass: "content p-3" }, [
+        _c("div", { staticClass: "container-fluid mt-4" }, [
+          _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.createEmployee()
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-12 mb-4 text-center" }, [
+                  _vm.showError
+                    ? _c("p", { staticClass: "alert-warning alert p-4" }, [
+                        _vm._v(_vm._s(_vm.err))
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "image" }, [
+                    _vm.image
+                      ? _c("img", {
+                          ref: "profileImage",
+                          attrs: { src: _vm.image }
+                        })
+                      : _c("img", {
+                          ref: "profileImage",
+                          attrs: {
+                            src:
+                              "https://s3.us-east-2.amazonaws.com/glorioustube/images/7669105f27f162dc1ae6b5f061220db7.png"
+                          }
+                        }),
+                    _vm._v(" "),
+                    _c("input", {
+                      ref: "imageContent",
+                      staticStyle: { display: "none" },
+                      attrs: { type: "file" },
+                      on: { change: _vm.onFileChange }
                     }),
+                    _vm._v(" "),
+                    _c("p", [
+                      _c(
+                        "a",
+                        {
+                          on: {
+                            click: function($event) {
+                              return _vm.$refs.imageContent.click()
+                            }
+                          }
+                        },
+                        [_vm._v("Change Picture")]
+                      )
+                    ])
+                  ])
+                ]),
                 _vm._v(" "),
-                _c("input", {
-                  ref: "imageContent",
-                  staticStyle: { display: "none" },
-                  attrs: { type: "file" },
-                  on: { change: _vm.onFileChange }
-                }),
-                _vm._v(" "),
-                _c("p", [
-                  _c(
-                    "a",
-                    {
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "title" } }, [
+                      _vm._v("Employee Name")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.name,
+                          expression: "name"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Employee Name" },
+                      domProps: { value: _vm.name },
                       on: {
-                        click: function($event) {
-                          return _vm.$refs.imageContent.click()
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.name = $event.target.value
                         }
                       }
-                    },
-                    [_vm._v("Change Picture")]
-                  )
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "title" } }, [
+                      _vm._v("Job Title")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.jobTitle,
+                          expression: "jobTitle"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Job Title" },
+                      domProps: { value: _vm.jobTitle },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.jobTitle = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "title" } }, [
+                      _vm._v("Job Status")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.jobStatus,
+                          expression: "jobStatus"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Job Status" },
+                      domProps: { value: _vm.jobStatus },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.jobStatus = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "title" } }, [
+                      _vm._v("Job Type")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.jobType,
+                            expression: "jobType"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.jobType = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { selected: "", value: "Full time" } },
+                          [_vm._v("Full time")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "Part time" } }, [
+                          _vm._v("Part time")
+                        ])
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "title" } }, [
+                      _vm._v("Employee Salary")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.salary,
+                          expression: "salary"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Employee Salary" },
+                      domProps: { value: _vm.salary },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.salary = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "form-group mt-4" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "add_btn",
+                        attrs: { disabled: _vm.submittingNow }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.submitText) +
+                            "\n                            "
+                        ),
+                        _vm.submittingNow
+                          ? _c("span", [
+                              _c("i", { staticClass: "fa fa-spinner fa-spin" })
+                            ])
+                          : _vm._e()
+                      ]
+                    )
+                  ])
                 ])
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "title" } }, [
-                  _vm._v("Employee Name")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.name,
-                      expression: "name"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "Employee Name" },
-                  domProps: { value: _vm.name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.name = $event.target.value
-                    }
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "title" } }, [_vm._v("Job Title")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.jobTitle,
-                      expression: "jobTitle"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "Job Title" },
-                  domProps: { value: _vm.jobTitle },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.jobTitle = $event.target.value
-                    }
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "title" } }, [
-                  _vm._v("Job Status")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.jobStatus,
-                      expression: "jobStatus"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "Job Status" },
-                  domProps: { value: _vm.jobStatus },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.jobStatus = $event.target.value
-                    }
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "title" } }, [_vm._v("Job Type")]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.jobType,
-                        expression: "jobType"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.jobType = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      }
-                    }
-                  },
-                  [
-                    _c(
-                      "option",
-                      { attrs: { selected: "", value: "Full time" } },
-                      [_vm._v("Full time")]
-                    ),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Part time" } }, [
-                      _vm._v("Part time")
-                    ])
-                  ]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "title" } }, [
-                  _vm._v("Employee Salary")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.salary,
-                      expression: "salary"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "Employee Salary" },
-                  domProps: { value: _vm.salary },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.salary = $event.target.value
-                    }
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c("div", { staticClass: "form-group mt-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "add_btn",
-                    attrs: { disabled: _vm.submittingNow }
-                  },
-                  [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(_vm.submitText) +
-                        "\n                            "
-                    ),
-                    _vm.submittingNow
-                      ? _c("span", [
-                          _c("i", { staticClass: "fa fa-spinner fa-spin" })
-                        ])
-                      : _vm._e()
-                  ]
-                )
-              ])
-            ])
-          ])
-        ]
-      )
-    ])
-  ])
+            ]
+          )
+        ])
+      ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c("h3", [_vm._v("Loading data...")]),
+      _vm._v(" "),
+      _c("p", [_c("i", { staticClass: "fa fa-spinner fa-spin" })])
+    ])
+  }
+]
 render._withStripped = true
 
 

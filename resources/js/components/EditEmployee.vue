@@ -1,5 +1,11 @@
 <template>
-    <div class="content p-3">
+    <div v-if="loading" class="loader">
+        <div class="text-center">
+            <h3>Loading data...</h3>
+            <p><i class="fa fa-spinner fa-spin"></i></p>
+        </div>
+    </div>
+    <div v-else class="content p-3">
         <div class="container-fluid mt-4">
             <form v-on:submit.prevent="createEmployee()">
                 <div class="row">
@@ -95,6 +101,7 @@
                 employees: [],
                 edit: '/edit-details/',
                 noData: false,
+                loading: true,
                 image: '',
                 name: '',
                 salary: '',
@@ -115,6 +122,7 @@
                 this.jobType = res.data.employee.job_type;
                 this.jobStatus = res.data.employee.job_status;
                 this.name = res.data.employee.name;
+                this.loading = false;
             });
         },
         methods: {
