@@ -28,14 +28,14 @@
                 </div>
                 <span class="pt-4 pb-4 title">Internia</span>
             </div>
-            <div class="flex_items">
+            <div class="flex_items d-none d-sm-none d-lg-flex d-lg-flex">
                 <span class="pt-4 pb-4 mr-5">Calender</span>
                 <span class="pt-4 pb-4 mr-5">Statistic</span>
                 <span class="pt-4 pb-4 mr-5 nav_active">Employee</span>
                 <span class="pt-4 pb-4 mr-5">Client</span>
                 <span class="pt-4 pb-4">Equipment</span>
             </div>
-            <div class="flex_items mr-3">
+            <div class="flex_items d-none d-sm-none d-lg-flex d-lg-flex">
                 <i class="fa menu_icons fa-bell-o mr-4"></i>
                 <div style="position: relative">
                     <i class="fa menu_icons fa-envelope-o mr-4"></i>
@@ -61,7 +61,7 @@
             </a>
         </div>
         <div class="flex_items flex_items_flex_start mt-4">
-            <div class="side_bar mr-4 p-4">
+            <div class="side_bar d-none d-sm-none d-lg-inline d-lg-inline  mr-4 p-4">
                 <a href="{{ url('/') }}">
                     <div class="flex_items justify_content_start cl_dark p-3">
                         <div class="logo_mock mr-3"></div>

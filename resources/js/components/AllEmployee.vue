@@ -99,29 +99,50 @@
                 let val = (value/1).toFixed(2).replace(',', '.')
                 return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             },
-            timeSince(date) {
-                let seconds = Math.floor((new Date() - date) / 1000);
-                let interval = Math.floor(seconds / 31536000);
-                if (interval > 1) {
-                    return interval + " years";
+            timeSince(time) {
+
+                switch (typeof time) {
+                    case 'number':
+                        break;
+                    case 'string':
+                        time = +new Date(time);
+                        break;
+                    default:
+                        time = +new Date();
                 }
-                interval = Math.floor(seconds / 2592000);
-                if (interval > 1) {
-                    return interval + " months";
+                let time_formats = [
+                    [60, 'seconds', 1],
+                    [120, '1 minute'],
+                    [3600, 'minutes', 60],
+                    [7200, '1 hour', '1 hour from now'],
+                    [86400, 'hours', 3600],
+                    [172800, '1 day', 'Tomorrow'],
+                    [604800, 'days', 86400],
+                    [1209600, '1 week', 'Next week'], // 60*60*24*7*4*2
+                    [2419200, 'weeks', 604800], // 60*60*24*7*4, 60*60*24*7
+                    [4838400, '1 month', 'Next month'], // 60*60*24*7*4*2
+                    [29030400, 'months', 2419200], // 60*60*24*7*4*12, 60*60*24*7*4
+                    [58060800, 'Last year', 'Next year'], // 60*60*24*7*4*12*2
+                    [2903040000, 'years', 29030400], // 60*60*24*7*4*12*100, 60*60*24*7*4*12
+                    [5806080000, 'Last century', 'Next century'], // 60*60*24*7*4*12*100*2
+                    [58060800000, 'centuries', 2903040000] // 60*60*24*7*4*12*100*20, 60*60*24*7*4*12*100
+                ];
+                let seconds = (+new Date() - time) / 1000,
+                    list_choice = 1;
+
+                if (seconds === 0) {
+                    return 'Moments ago'
                 }
-                interval = Math.floor(seconds / 86400);
-                if (interval > 1) {
-                    return interval + " days";
-                }
-                interval = Math.floor(seconds / 3600);
-                if (interval > 1) {
-                    return interval + " hours";
-                }
-                interval = Math.floor(seconds / 60);
-                if (interval > 1) {
-                    return interval + " minutes";
-                }
-                return Math.floor(seconds) + " seconds";
+                let i = 0,
+                    format;
+                while (format = time_formats[i++])
+                    if (seconds < format[0]) {
+                        if (typeof format[2] == 'string')
+                            return format[list_choice];
+                        else
+                            return Math.floor(seconds / format[2]) + ' ' + format[1];
+                    }
+                return time;
             }
         }
     }

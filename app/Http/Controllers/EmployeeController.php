@@ -90,7 +90,7 @@ class EmployeeController extends Controller
         $insertData = array(
             'name' => $data['name'],
             'current_salary' => $data['salary'],
-            'last_salary_change	' => $lastSalaryChange,
+            'last_salary_change' => $lastSalaryChange,
             'job_type' => $data['job_type'],
             'image' => $request->get('image'),
             'job_title' => $data['job_title'],
